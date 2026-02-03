@@ -1,38 +1,41 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Surprise for Bujji ❤️</title>
+<title>Birthday Surprise for Bujji ❤️</title>
 
 <style>
 body {
-  background: linear-gradient(to bottom, #ff9a9e, #fad0c4);
+  margin:0;
+  background: radial-gradient(circle, #ff9a9e, #fad0c4);
   text-align: center;
   font-family: Arial, sans-serif;
   overflow: hidden;
+  color:#333;
 }
 
 .box {
   background: white;
   padding: 25px;
   border-radius: 20px;
-  width: 60%;
+  width: 70%;
   margin: 120px auto;
-  box-shadow: 0 0 15px red;
+  box-shadow: 0 0 20px red;
+  z-index: 5;
   position: relative;
-  z-index: 2;
 }
 
 button {
-  padding: 12px 25px;
+  padding: 12px 30px;
   font-size: 18px;
-  border-radius: 15px;
+  border-radius: 20px;
   border: none;
   background: red;
   color: white;
   cursor: pointer;
+  margin-top: 20px;
 }
 
-/* HEARTS */
+/* hearts */
 .heart {
   position: fixed;
   bottom: -20px;
@@ -44,57 +47,130 @@ button {
   0% {transform: translateY(0); opacity:1;}
   100% {transform: translateY(-800px); opacity:0;}
 }
+
+/* fireworks */
+.firework {
+  position: fixed;
+  width: 5px;
+  height: 5px;
+  background: gold;
+  border-radius: 50%;
+  animation: explode 1.5s ease-out forwards;
+}
+
+@keyframes explode {
+  from {transform: scale(1); opacity:1;}
+  to {transform: scale(20); opacity:0;}
+}
+
+/* cake */
+#cake {
+  font-size: 120px;
+  animation: bounce 1s infinite alternate;
+}
+
+@keyframes bounce {
+  from {transform: translateY(0);}
+  to {transform: translateY(-20px);}
+}
 </style>
 </head>
 
 <body>
 
-<div class="box" id="startBox">
+<audio autoplay loop>
+  <source src="https://cdn.pixabay.com/audio/2023/02/14/audio_6d4fa82c41.mp3" type="audio/mpeg">
+</audio>
+
+<div class="box" id="content">
   <h2>Hi Bujji ❤️</h2>
-  <p>Answer some funny questions before your surprise 😜</p>
-  <button onclick="startQuiz()">Start</button>
+  <p>Please smile 😊</p>
+  <button onclick="nextStep()">Next</button>
 </div>
 
 <script>
-function startQuiz() {
-  if(confirm("Are you the cutest girl in the world? 😍")) {
-    if(confirm("Do you love your Gem forever? 😁")) {
-      if(confirm("Will you smile today for me? 😊")) {
-        showWish();
-      } else startQuiz();
-    } else startQuiz();
-  } else startQuiz();
+let step = 0;
+let age = 25;   // 🔴 CHANGE HER AGE HERE
+
+function nextStep(){
+  const box = document.getElementById("content");
+
+  if(step === 0){
+    box.innerHTML = `
+      <h2>Bujji ❤️</h2>
+      <p>Ur Gem loves u sooo much 😘</p>
+      <p>Do u agree?</p>
+      <button onclick="nextStep()">Yes ❤️</button>
+    `;
+  }
+
+  else if(step === 1){
+    box.innerHTML = `
+      <h2>Bujji 💖</h2>
+      <p>Ur Gem is missing u sooo much 😢</p>
+      <button onclick="nextStep()">Next</button>
+    `;
+  }
+
+  else if(step === 2){
+    box.innerHTML = `
+      <h2>Bujji 😍</h2>
+      <p>Click Next with happiness and smile 😊</p>
+      <button onclick="nextStep()">Next</button>
+    `;
+  }
+
+  else if(step === 3){
+    box.innerHTML = `
+      <div id="cake">🎂</div>
+      <h2>Cut the cake Bujji 🎉</h2>
+      <button onclick="nextStep()">Cut Cake</button>
+    `;
+  }
+
+  else if(step === 4){
+    box.innerHTML = `
+      <h1>🎉 HAPPY BIRTHDAY BUJJI 🎂</h1>
+      <h2>You are ${age} years young today ❤️</h2>
+      <p><b>You are my life.</b></p>
+      <p>
+        My love, I love you sooo much 💕<br><br>
+        I want to celebrate so many birthdays like this<br>
+        again and again with you forever 😘<br><br>
+        Thank you for being my happiness,<br>
+        my strength and my world ❤️
+      </p>
+      <h3>From your Gem 💖</h3>
+    `;
+    startFireworks();
+  }
+
+  step++;
 }
 
-function showWish() {
-  document.getElementById("startBox").innerHTML = `
-    <h1>🎉 HAPPY BIRTHDAY MY BUJJI 🎂</h1>
-    <h2>❤️ My Love ❤️</h2>
-    <p>
-      You are the most precious gift in my life.<br><br>
-      Your smile is my happiness,<br>
-      Your love is my strength 💕<br><br>
-      Always stay happy, always stay mine 😘<br><br>
-      From your loving husband,<br>
-      <b>Gem ❤️</b>
-    </p>
-    <h2>🎂🎉🥰💖</h2>
-  `;
-}
-
-/* Floating hearts */
+/* hearts */
 setInterval(() => {
   const heart = document.createElement("div");
   heart.className = "heart";
   heart.innerText = "❤️";
-  heart.style.left = Math.random() * 100 + "vw";
-  heart.style.fontSize = (Math.random() * 20 + 15) + "px";
+  heart.style.left = Math.random()*100 + "vw";
+  heart.style.fontSize = (Math.random()*20+15)+"px";
   document.body.appendChild(heart);
+  setTimeout(()=>heart.remove(),6000);
+},400);
 
-  setTimeout(() => {
-    heart.remove();
-  }, 6000);
-}, 400);
+/* fireworks */
+function startFireworks(){
+  setInterval(()=>{
+    const fw = document.createElement("div");
+    fw.className = "firework";
+    fw.style.left = Math.random()*100+"vw";
+    fw.style.top = Math.random()*100+"vh";
+    fw.style.background = `hsl(${Math.random()*360},100%,50%)`;
+    document.body.appendChild(fw);
+    setTimeout(()=>fw.remove(),1500);
+  },300);
+}
 </script>
 
 </body>
