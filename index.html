@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Surprise for Bujji ❤️</title>
+
+<style>
+body {
+  background: linear-gradient(to bottom, #ff9a9e, #fad0c4);
+  text-align: center;
+  font-family: Arial, sans-serif;
+  overflow: hidden;
+}
+
+.box {
+  background: white;
+  padding: 25px;
+  border-radius: 20px;
+  width: 60%;
+  margin: 120px auto;
+  box-shadow: 0 0 15px red;
+  position: relative;
+  z-index: 2;
+}
+
+button {
+  padding: 12px 25px;
+  font-size: 18px;
+  border-radius: 15px;
+  border: none;
+  background: red;
+  color: white;
+  cursor: pointer;
+}
+
+/* HEARTS */
+.heart {
+  position: fixed;
+  bottom: -20px;
+  color: red;
+  animation: floatUp 6s linear forwards;
+}
+
+@keyframes floatUp {
+  0% {transform: translateY(0); opacity:1;}
+  100% {transform: translateY(-800px); opacity:0;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="box" id="startBox">
+  <h2>Hi Bujji ❤️</h2>
+  <p>Answer some funny questions before your surprise 😜</p>
+  <button onclick="startQuiz()">Start</button>
+</div>
+
+<script>
+function startQuiz() {
+  if(confirm("Are you the cutest girl in the world? 😍")) {
+    if(confirm("Do you love your Gem forever? 😁")) {
+      if(confirm("Will you smile today for me? 😊")) {
+        showWish();
+      } else startQuiz();
+    } else startQuiz();
+  } else startQuiz();
+}
+
+function showWish() {
+  document.getElementById("startBox").innerHTML = `
+    <h1>🎉 HAPPY BIRTHDAY MY BUJJI 🎂</h1>
+    <h2>❤️ My Love ❤️</h2>
+    <p>
+      You are the most precious gift in my life.<br><br>
+      Your smile is my happiness,<br>
+      Your love is my strength 💕<br><br>
+      Always stay happy, always stay mine 😘<br><br>
+      From your loving husband,<br>
+      <b>Gem ❤️</b>
+    </p>
+    <h2>🎂🎉🥰💖</h2>
+  `;
+}
+
+/* Floating hearts */
+setInterval(() => {
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerText = "❤️";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.fontSize = (Math.random() * 20 + 15) + "px";
+  document.body.appendChild(heart);
+
+  setTimeout(() => {
+    heart.remove();
+  }, 6000);
+}, 400);
+</script>
+
+</body>
+</html>
