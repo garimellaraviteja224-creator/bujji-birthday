@@ -3,121 +3,147 @@
 <head>
 <meta charset="UTF-8">
 <title>Happy Birthday Bujji</title>
+
 <style>
-body {
-  margin: 0;
-  font-family: 'Comic Sans MS', cursive;
-  background: pink;
-  overflow: hidden;
-  text-align: center;
-  color: white;
+html,body{
+  margin:0;
+  width:100%;
+  height:100%;
+  overflow:hidden;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg,#1a0000,#4d0000,#800000);
+  color:#ffe6e6;
 }
 
-.page {
-  display: none;
-  padding: 40px;
+.page{
+  display:none;
+  width:100%;
+  height:100%;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  text-align:center;
+  padding:40px;
+  animation: fade 1.5s ease;
 }
 
-.active {
-  display: block;
+.active{display:flex;}
+
+h1{font-size:3.2em;}
+h2{font-size:2.2em;}
+p{font-size:1.4em; line-height:1.6;}
+
+button{
+  padding:15px 40px;
+  font-size:1.3em;
+  border:none;
+  border-radius:40px;
+  background:#ff0033;
+  color:white;
+  cursor:pointer;
+  box-shadow:0 0 20px #ff4d6d;
+  margin-top:25px;
+  transition:0.3s;
 }
 
-button {
-  padding: 15px 30px;
-  font-size: 18px;
-  border: none;
-  border-radius: 30px;
-  background: red;
-  color: white;
-  cursor: pointer;
-  box-shadow: 0 0 10px white;
+button:hover{
+  transform:scale(1.1);
+  background:#ff3366;
 }
 
-button:hover {
-  background: crimson;
+@keyframes fade{
+  from{opacity:0; transform:scale(0.9);}
+  to{opacity:1; transform:scale(1);}
 }
 
-.hearts::before {
-  content: "❤️ 💕 💖 💗 💓 💞";
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  font-size: 40px;
-  animation: float 10s linear infinite;
-  opacity: 0.3;
+/* Floating hearts */
+.heart{
+  position:absolute;
+  color:red;
+  font-size:25px;
+  animation: floatUp 10s linear infinite;
 }
 
-@keyframes float {
-  0% {transform: translateY(100%);}
-  100% {transform: translateY(-100%);}
+@keyframes floatUp{
+  from{bottom:-10%; opacity:1;}
+  to{bottom:110%; opacity:0;}
 }
 
-img {
-  width: 200px;
+/* Cake animation */
+.cake{
+  width:260px;
   animation: bounce 2s infinite;
 }
 
-@keyframes bounce {
-  0%,100% {transform: translateY(0);}
-  50% {transform: translateY(-20px);}
+@keyframes bounce{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-20px);}
 }
 
-audio {
-  display: none;
+/* Feeding animation */
+.feed{
+  font-size:120px;
+  animation: feedAnim 1.5s infinite;
 }
 
-.textbox {
-  background: rgba(255,0,0,0.4);
-  padding: 20px;
-  border-radius: 20px;
+@keyframes feedAnim{
+  0%{transform:scale(1);}
+  50%{transform:scale(1.2);}
+  100%{transform:scale(1);}
+}
+
+.textbox{
+  max-width:900px;
+  background:rgba(255,0,0,0.2);
+  padding:30px;
+  border-radius:25px;
+  overflow-y:auto;
+  height:70%;
 }
 </style>
 </head>
 
-<body class="hearts">
+<body>
 
-<audio autoplay loop>
-  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_9df0a7a8fa.mp3?filename=romantic-110552.mp3" type="audio/mpeg">
+<audio id="bgm" loop>
+<source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_9df0a7a8fa.mp3?filename=romantic-110552.mp3" type="audio/mpeg">
 </audio>
 
 <div id="page1" class="page active">
-  <h1>Hi Bujji ❤️</h1>
-  <button onclick="nextPage(2)">It's Bujji Birthday 🎂</button>
+<h1>Hi Bujji ❤️</h1>
+<button onclick="startMusic();nextPage(2)">It's Bujji Birthday 🎂</button>
 </div>
 
 <div id="page2" class="page">
-  <h1>🤗 Hug Me</h1>
-  <button onclick="nextPage(3)">Next ➡️</button>
+<h1>🤗 Hug Me</h1>
+<h2>My Small Bujji turns to 38 💖</h2>
+<p>👧 💕 👧 💕 👧</p>
+<button onclick="nextPage(3)">Next ➡️</button>
 </div>
 
 <div id="page3" class="page">
-  <h1>My Small Bujji turns to 38 🥰</h1>
-  <p>👧 💕 👧 💕 👧</p>
-  <button onclick="nextPage(4)">Next ➡️</button>
+<h1>🎂 Virtual Cake Cutting 🎂</h1>
+<img src="https://cdn-icons-png.flaticon.com/512/869/869636.png" class="cake">
+<p>Cut the Cake 🍰</p>
+<button onclick="nextPage(4)">Cut Cake 🎂</button>
 </div>
 
 <div id="page4" class="page">
-  <h1>🎂 Virtual Cake Cutting 🎂</h1>
-  <p>Cut the Cake 🍰</p>
-  <button onclick="nextPage(5)">Cut Cake 🎂</button>
+<h1>Gem Feeding cake to Bujji ❤️</h1>
+<div class="feed">👦🍰👧</div>
+<p>So Sweet 💕</p>
+<button onclick="nextPage(5)">Next ➡️</button>
 </div>
 
 <div id="page5" class="page">
-  <h1>👦 Feeding Cake to 👧</h1>
-  <p>🤗💞</p>
-  <button onclick="nextPage(6)">Next ➡️</button>
+<h1>🎁 Open this Hamper for Surprise 🎁</h1>
+<button onclick="nextPage(6)">Open Hamper 🎁</button>
 </div>
 
 <div id="page6" class="page">
-  <h1>🎁 Open this Hamper for Surprise Gift 🎁</h1>
-  <button onclick="nextPage(7)">Open Hamper 🎁</button>
-</div>
-
-<div id="page7" class="page">
 <div class="textbox">
 <p>
 My love…<br><br>
-
 My Bujji…<br><br>
 
 If you are watching this, that means the clock has just touched 12:00 AM, and a very special day has begun.<br>
@@ -129,27 +155,10 @@ Happy Birthday, my world.<br>
 Happy Birthday, my everything.<br><br>
 
 Bujji…<br>
-Today is not just your birthday.<br>
-Today is the day the universe decided to send an angel into my life.<br>
-Today is the day love took a human form… and came to me as you.<br><br>
-
-You are not just my wife.<br>
-You are my best friend.<br>
-You are my companion.<br>
-You are my safe place.<br>
-You are my smile on sad days.<br>
-You are my strength when I feel weak.<br>
-You are my home when the whole world feels noisy.<br><br>
-
-When I say “you are my world”, I really mean it.<br>
-My mornings begin with your thoughts.<br>
-My nights feel peaceful because of your presence.<br><br>
+You are my wife, my best friend, my companion, my safe place, my smile, my strength, my home.<br><br>
 
 Before you, my life was just time passing.<br>
 After you, my life became a story worth living.<br><br>
-
-You are my miracle.<br>
-You are my forever.<br><br>
 
 🎉 Happy Birthday, Bujji.<br>
 ❤️ You are my everything.<br>
@@ -158,18 +167,35 @@ You are my forever.<br><br>
 Ur's Gem.
 </p>
 </div>
-<button onclick="nextPage(8)">Next ➡️</button>
+<button onclick="nextPage(7)">Next ➡️</button>
 </div>
 
-<div id="page8" class="page">
-  <h1>❤️ I Love You Bujji ❤️</h1>
-  <h2>From Gem 💍</h2>
+<div id="page7" class="page">
+<h1>❤️ I Love You Bujji ❤️</h1>
+<h2>From Gem 💍</h2>
 </div>
 
 <script>
-function nextPage(n) {
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  document.getElementById('page'+n).classList.add('active');
+function nextPage(n){
+ document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+ document.getElementById('page'+n).classList.add('active');
+}
+
+function startMusic(){
+ let music=document.getElementById("bgm");
+ music.muted=false;
+ music.volume=0.7;
+ music.play();
+}
+
+/* create hearts */
+for(let i=0;i<40;i++){
+ let h=document.createElement("div");
+ h.className="heart";
+ h.innerHTML="❤️";
+ h.style.left=Math.random()*100+"%";
+ h.style.animationDuration=5+Math.random()*5+"s";
+ document.body.appendChild(h);
 }
 </script>
 
