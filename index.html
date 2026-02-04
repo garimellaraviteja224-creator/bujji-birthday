@@ -1,175 +1,175 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Birthday Surprise for Bujji ❤️</title>
-
+<meta charset="UTF-8">
+<title>Happy Birthday Bujji</title>
 <style>
 body {
-  margin:0;
-  background: radial-gradient(circle, #ff9a9e, #fad0c4);
-  text-align: center;
-  font-family: Arial, sans-serif;
+  margin: 0;
+  font-family: 'Comic Sans MS', cursive;
+  background: pink;
   overflow: hidden;
-  color:#333;
+  text-align: center;
+  color: white;
 }
 
-.box {
-  background: white;
-  padding: 25px;
-  border-radius: 20px;
-  width: 70%;
-  margin: 120px auto;
-  box-shadow: 0 0 20px red;
-  z-index: 5;
-  position: relative;
+.page {
+  display: none;
+  padding: 40px;
+}
+
+.active {
+  display: block;
 }
 
 button {
-  padding: 12px 30px;
+  padding: 15px 30px;
   font-size: 18px;
-  border-radius: 20px;
   border: none;
+  border-radius: 30px;
   background: red;
   color: white;
   cursor: pointer;
-  margin-top: 20px;
+  box-shadow: 0 0 10px white;
 }
 
-/* hearts */
-.heart {
+button:hover {
+  background: crimson;
+}
+
+.hearts::before {
+  content: "❤️ 💕 💖 💗 💓 💞";
   position: fixed;
-  bottom: -20px;
-  color: red;
-  animation: floatUp 6s linear forwards;
+  width: 100%;
+  height: 100%;
+  font-size: 40px;
+  animation: float 10s linear infinite;
+  opacity: 0.3;
 }
 
-@keyframes floatUp {
-  0% {transform: translateY(0); opacity:1;}
-  100% {transform: translateY(-800px); opacity:0;}
+@keyframes float {
+  0% {transform: translateY(100%);}
+  100% {transform: translateY(-100%);}
 }
 
-/* fireworks */
-.firework {
-  position: fixed;
-  width: 5px;
-  height: 5px;
-  background: gold;
-  border-radius: 50%;
-  animation: explode 1.5s ease-out forwards;
-}
-
-@keyframes explode {
-  from {transform: scale(1); opacity:1;}
-  to {transform: scale(20); opacity:0;}
-}
-
-/* cake */
-#cake {
-  font-size: 120px;
-  animation: bounce 1s infinite alternate;
+img {
+  width: 200px;
+  animation: bounce 2s infinite;
 }
 
 @keyframes bounce {
-  from {transform: translateY(0);}
-  to {transform: translateY(-20px);}
+  0%,100% {transform: translateY(0);}
+  50% {transform: translateY(-20px);}
+}
+
+audio {
+  display: none;
+}
+
+.textbox {
+  background: rgba(255,0,0,0.4);
+  padding: 20px;
+  border-radius: 20px;
 }
 </style>
 </head>
 
-<body>
+<body class="hearts">
 
 <audio autoplay loop>
-  <source src="https://cdn.pixabay.com/audio/2023/02/14/audio_6d4fa82c41.mp3" type="audio/mpeg">
+  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_9df0a7a8fa.mp3?filename=romantic-110552.mp3" type="audio/mpeg">
 </audio>
 
-<div class="box" id="content">
-  <h2>Hi Bujji ❤️</h2>
-  <p>Please smile 😊</p>
-  <button onclick="nextStep()">Next</button>
+<div id="page1" class="page active">
+  <h1>Hi Bujji ❤️</h1>
+  <button onclick="nextPage(2)">It's Bujji Birthday 🎂</button>
+</div>
+
+<div id="page2" class="page">
+  <h1>🤗 Hug Me</h1>
+  <button onclick="nextPage(3)">Next ➡️</button>
+</div>
+
+<div id="page3" class="page">
+  <h1>My Small Bujji turns to 38 🥰</h1>
+  <p>👧 💕 👧 💕 👧</p>
+  <button onclick="nextPage(4)">Next ➡️</button>
+</div>
+
+<div id="page4" class="page">
+  <h1>🎂 Virtual Cake Cutting 🎂</h1>
+  <p>Cut the Cake 🍰</p>
+  <button onclick="nextPage(5)">Cut Cake 🎂</button>
+</div>
+
+<div id="page5" class="page">
+  <h1>👦 Feeding Cake to 👧</h1>
+  <p>🤗💞</p>
+  <button onclick="nextPage(6)">Next ➡️</button>
+</div>
+
+<div id="page6" class="page">
+  <h1>🎁 Open this Hamper for Surprise Gift 🎁</h1>
+  <button onclick="nextPage(7)">Open Hamper 🎁</button>
+</div>
+
+<div id="page7" class="page">
+<div class="textbox">
+<p>
+My love…<br><br>
+
+My Bujji…<br><br>
+
+If you are watching this, that means the clock has just touched 12:00 AM, and a very special day has begun.<br>
+The world calls this date 5th February, but for me…<br>
+it is the day my happiness was born.<br><br>
+
+Happy Birthday, my love.<br>
+Happy Birthday, my world.<br>
+Happy Birthday, my everything.<br><br>
+
+Bujji…<br>
+Today is not just your birthday.<br>
+Today is the day the universe decided to send an angel into my life.<br>
+Today is the day love took a human form… and came to me as you.<br><br>
+
+You are not just my wife.<br>
+You are my best friend.<br>
+You are my companion.<br>
+You are my safe place.<br>
+You are my smile on sad days.<br>
+You are my strength when I feel weak.<br>
+You are my home when the whole world feels noisy.<br><br>
+
+When I say “you are my world”, I really mean it.<br>
+My mornings begin with your thoughts.<br>
+My nights feel peaceful because of your presence.<br><br>
+
+Before you, my life was just time passing.<br>
+After you, my life became a story worth living.<br><br>
+
+You are my miracle.<br>
+You are my forever.<br><br>
+
+🎉 Happy Birthday, Bujji.<br>
+❤️ You are my everything.<br>
+🌙 This midnight wish is just the beginning of a lifetime of love.<br><br>
+
+Ur's Gem.
+</p>
+</div>
+<button onclick="nextPage(8)">Next ➡️</button>
+</div>
+
+<div id="page8" class="page">
+  <h1>❤️ I Love You Bujji ❤️</h1>
+  <h2>From Gem 💍</h2>
 </div>
 
 <script>
-let step = 0;
-let age = 25;   // 🔴 CHANGE HER AGE HERE
-
-function nextStep(){
-  const box = document.getElementById("content");
-
-  if(step === 0){
-    box.innerHTML = `
-      <h2>Bujji ❤️</h2>
-      <p>Ur Gem loves u sooo much 😘</p>
-      <p>Do u agree?</p>
-      <button onclick="nextStep()">Yes ❤️</button>
-    `;
-  }
-
-  else if(step === 1){
-    box.innerHTML = `
-      <h2>Bujji 💖</h2>
-      <p>Ur Gem is missing u sooo much 😢</p>
-      <button onclick="nextStep()">Next</button>
-    `;
-  }
-
-  else if(step === 2){
-    box.innerHTML = `
-      <h2>Bujji 😍</h2>
-      <p>Click Next with happiness and smile 😊</p>
-      <button onclick="nextStep()">Next</button>
-    `;
-  }
-
-  else if(step === 3){
-    box.innerHTML = `
-      <div id="cake">🎂</div>
-      <h2>Cut the cake Bujji 🎉</h2>
-      <button onclick="nextStep()">Cut Cake</button>
-    `;
-  }
-
-  else if(step === 4){
-    box.innerHTML = `
-      <h1>🎉 HAPPY BIRTHDAY BUJJI 🎂</h1>
-      <h2>You are ${age} years young today ❤️</h2>
-      <p><b>You are my life.</b></p>
-      <p>
-        My love, I love you sooo much 💕<br><br>
-        I want to celebrate so many birthdays like this<br>
-        again and again with you forever 😘<br><br>
-        Thank you for being my happiness,<br>
-        my strength and my world ❤️
-      </p>
-      <h3>From your Gem 💖</h3>
-    `;
-    startFireworks();
-  }
-
-  step++;
-}
-
-/* hearts */
-setInterval(() => {
-  const heart = document.createElement("div");
-  heart.className = "heart";
-  heart.innerText = "❤️";
-  heart.style.left = Math.random()*100 + "vw";
-  heart.style.fontSize = (Math.random()*20+15)+"px";
-  document.body.appendChild(heart);
-  setTimeout(()=>heart.remove(),6000);
-},400);
-
-/* fireworks */
-function startFireworks(){
-  setInterval(()=>{
-    const fw = document.createElement("div");
-    fw.className = "firework";
-    fw.style.left = Math.random()*100+"vw";
-    fw.style.top = Math.random()*100+"vh";
-    fw.style.background = `hsl(${Math.random()*360},100%,50%)`;
-    document.body.appendChild(fw);
-    setTimeout(()=>fw.remove(),1500);
-  },300);
+function nextPage(n) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page'+n).classList.add('active');
 }
 </script>
 
