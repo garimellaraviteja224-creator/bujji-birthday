@@ -11,8 +11,27 @@ html,body{
   height:100%;
   overflow:hidden;
   font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(135deg,#1a0000,#4d0000,#800000);
+  background: linear-gradient(135deg,#2b0000,#4d0000,#800000);
   color:#ffe6e6;
+}
+
+/* Floating Banner */
+#banner{
+  position:fixed;
+  top:10px;
+  width:100%;
+  text-align:center;
+  font-size:3em;
+  font-weight:bold;
+  color:#ffcccc;
+  text-shadow:0 0 20px red;
+  animation: glow 2s infinite alternate;
+  z-index:10;
+}
+
+@keyframes glow{
+  from{opacity:0.6;}
+  to{opacity:1;}
 }
 
 .page{
@@ -31,7 +50,7 @@ html,body{
 
 h1{font-size:3.2em;}
 h2{font-size:2.2em;}
-p{font-size:1.4em; line-height:1.6;}
+p{font-size:1.4em; line-height:1.7;}
 
 button{
   padding:15px 40px;
@@ -82,19 +101,18 @@ button:hover{
 
 /* Feeding animation */
 .feed{
-  font-size:120px;
-  animation: feedAnim 1.5s infinite;
+  font-size:4em;
+  animation: feedmove 2s infinite alternate;
 }
 
-@keyframes feedAnim{
-  0%{transform:scale(1);}
-  50%{transform:scale(1.2);}
-  100%{transform:scale(1);}
+@keyframes feedmove{
+  from{transform:translateX(-20px);}
+  to{transform:translateX(20px);}
 }
 
 .textbox{
   max-width:900px;
-  background:rgba(255,0,0,0.2);
+  background:rgba(255,0,0,0.25);
   padding:30px;
   border-radius:25px;
   overflow-y:auto;
@@ -104,6 +122,8 @@ button:hover{
 </head>
 
 <body>
+
+<div id="banner">🎉 HAPPY BIRTHDAY BUJJI 🎉</div>
 
 <audio id="bgm" loop>
 <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_9df0a7a8fa.mp3?filename=romantic-110552.mp3" type="audio/mpeg">
@@ -118,26 +138,26 @@ button:hover{
 <h1>🤗 Hug Me</h1>
 <h2>My Small Bujji turns to 38 💖</h2>
 <p>👧 💕 👧 💕 👧</p>
-<button onclick="nextPage(3)">Next ➡️</button>
+<button onclick="startMusic();nextPage(3)">Next ➡️</button>
 </div>
 
 <div id="page3" class="page">
 <h1>🎂 Virtual Cake Cutting 🎂</h1>
 <img src="https://cdn-icons-png.flaticon.com/512/869/869636.png" class="cake">
 <p>Cut the Cake 🍰</p>
-<button onclick="nextPage(4)">Cut Cake 🎂</button>
+<button onclick="startMusic();nextPage(4)">Cut Cake 🎂</button>
 </div>
 
 <div id="page4" class="page">
-<h1>Gem Feeding cake to Bujji ❤️</h1>
-<div class="feed">👦🍰👧</div>
-<p>So Sweet 💕</p>
-<button onclick="nextPage(5)">Next ➡️</button>
+<h1>🍰 Gem Feeding Cake to Bujji 🍰</h1>
+<div class="feed">👦➡️🍰➡️👧</div>
+<h2>🤗💞</h2>
+<button onclick="startMusic();nextPage(5)">Next ➡️</button>
 </div>
 
 <div id="page5" class="page">
 <h1>🎁 Open this Hamper for Surprise 🎁</h1>
-<button onclick="nextPage(6)">Open Hamper 🎁</button>
+<button onclick="startMusic();nextPage(6)">Open Hamper 🎁</button>
 </div>
 
 <div id="page6" class="page">
@@ -147,18 +167,14 @@ My love…<br><br>
 My Bujji…<br><br>
 
 If you are watching this, that means the clock has just touched 12:00 AM, and a very special day has begun.<br>
-The world calls this date 5th February, but for me…<br>
-it is the day my happiness was born.<br><br>
+The world calls this date 5th February, but for me… it is the day my happiness was born.<br><br>
 
 Happy Birthday, my love.<br>
 Happy Birthday, my world.<br>
 Happy Birthday, my everything.<br><br>
 
-Bujji…<br>
-You are my wife, my best friend, my companion, my safe place, my smile, my strength, my home.<br><br>
-
-Before you, my life was just time passing.<br>
-After you, my life became a story worth living.<br><br>
+You are my miracle.<br>
+You are my forever.<br><br>
 
 🎉 Happy Birthday, Bujji.<br>
 ❤️ You are my everything.<br>
@@ -167,7 +183,7 @@ After you, my life became a story worth living.<br><br>
 Ur's Gem.
 </p>
 </div>
-<button onclick="nextPage(7)">Next ➡️</button>
+<button onclick="startMusic();nextPage(7)">Next ➡️</button>
 </div>
 
 <div id="page7" class="page">
@@ -184,11 +200,10 @@ function nextPage(n){
 function startMusic(){
  let music=document.getElementById("bgm");
  music.muted=false;
- music.volume=0.7;
- music.play();
+ music.play().catch(()=>{});
 }
 
-/* create hearts */
+/* hearts */
 for(let i=0;i<40;i++){
  let h=document.createElement("div");
  h.className="heart";
